@@ -1,0 +1,80 @@
+import edu.wpi.first.gradlerio.GradleRIOPlugin
+import edu.wpi.first.gradlerio.frc.FRCJavaArtifact
+import edu.wpi.first.gradlerio.frc.RoboRIO
+
+plugins {
+{% if cookiecutter.use_kotlin == 'y' %}
+    id "org.jetbrains.kotlin.jvm" version "1.3.11"
+{% else %}
+    id "java"
+{% endif %}
+    id "edu.wpi.first.GradleRIO" version "2019.0.0-alpha-3"
+    id "idea"
+}
+
+def TEAM = {{ cookiecutter.frc_team }}
+def ROBOT_CLASS = "{{ cookiecutter.package_name }}.Robot"
+
+repositories {
+    jcenter()
+}
+
+wpi {
+  ctreVersion = "5.7.1.0"
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
+
+    compile wpilib()
+    compile ctre()
+    compile navx()
+{% if cookiecutter.use_thirdcoast_swerve == 'y' %}
+    compile "org.strykeforce.thirdcoast:swerve:${thirdcoastVersion}"
+{% endif %}
+{% if cookiecutter.use_thirdcoast_telemetry == 'y' %}
+    compile "org.strykeforce.thirdcoast:telemetry:${thirdcoastVersion}"
+{% endif %}
+{% if cookiecutter.use_kotlin == 'y' %}
+    compile "io.github.microutils:kotlin-logging:${kotlinLoggingVersion}"
+{% endif %}
+    compile "ch.qos.logback:logback-classic:${logbackVersion}"
+}
+
+{% if cookiecutter.use_kotlin == 'y' %}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+{% endif %}
+
+def robotManifest = {
+    attributes "Main-Class": "edu.wpi.first.wpilibj.RobotBase"
+    attributes "Robot-Class": frc.robotClass
+}
+
+jar {
+    from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    manifest GradleRIOPlugin.javaManifest(ROBOT_CLASS)
+}
+
+deploy {
+    targets {
+        target("roborio", RoboRIO) {
+            team = TEAM
+        }
+    }
+    artifacts {
+        artifact("frcJava", FRCJavaArtifact) {
+            targets << "roborio"
+        }
+    }
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
