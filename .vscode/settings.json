@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/Users/jeff/.virtualenvs/cookiecutter-robot/bin/python"
+    "python.pythonPath": "/Users/jeff/.virtualenvs/cookiecutter-robot/bin/python",
+    "java.configuration.updateBuildConfiguration": "disabled"
 }

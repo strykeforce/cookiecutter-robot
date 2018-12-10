@@ -23,3 +23,6 @@ if __name__ == "__main__":
     language = "java" if "{{ cookiecutter.use_kotlin }}" == "y" else "kotlin"
     rmtree(os.path.join(MAIN_DIR, language))
     rmtree(os.path.join(TEST_DIR, language))
+
+    if "{{ cookiecutter.use_logger }}" != "y":
+        rmtree(os.path.join(MAIN_DIR, "resources"))
