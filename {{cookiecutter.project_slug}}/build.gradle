@@ -24,8 +24,9 @@ wpi {
 }
 
 dependencies {
+{% if cookiecutter.use_kotlin == 'y' %}    
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
-
+{% endif %}
     compile wpilib()
     compile ctre()
     compile navx()
@@ -38,7 +39,9 @@ dependencies {
 {% if cookiecutter.use_kotlin == 'y' %}
     compile "io.github.microutils:kotlin-logging:${kotlinLoggingVersion}"
 {% endif %}
+{% if cookiecutter.use_logger == 'y' %}
     compile "ch.qos.logback:logback-classic:${logbackVersion}"
+{% endif %}
 }
 
 {% if cookiecutter.use_kotlin == 'y' %}
