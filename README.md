@@ -1,6 +1,6 @@
 # cookiecutter-robot
 
-A cookiecutter template to create a new FRC robot project.
+A cookiecutter template to create a new FRC robot project in Java or Kotlin.
 
 ## Requirements
 
