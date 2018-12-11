@@ -8,6 +8,7 @@ TEST_DIR = os.path.join(PROJECT_DIR, "src", "test")
 
 import stat
 
+
 def rmtree(top):
     for root, dirs, files in os.walk(top, topdown=False):
         for name in files:
@@ -26,3 +27,24 @@ if __name__ == "__main__":
 
     if "{{ cookiecutter.use_logger }}" != "y":
         rmtree(os.path.join(MAIN_DIR, "resources"))
+
+    if "{{ cookiecutter.use_thirdcoast_swerve }}" != "y":
+        language = "java" if "{{ cookiecutter.use_kotlin }}" != "y" else "kotlin"
+        os.remove(
+            os.path.join(
+                MAIN_DIR,
+                language,
+                "{{ cookiecutter.package_path }}",
+                "command",
+                "TeleOpDriveCommand.java",
+            )
+        )
+        os.remove(
+            os.path.join(
+                MAIN_DIR,
+                language,
+                "{{ cookiecutter.package_path }}",
+                "subsystem",
+                "DriveSubsystem.java",
+            )
+        )
