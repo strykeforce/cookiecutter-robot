@@ -8,6 +8,9 @@
     </encoder>
   </appender>
 
+  <logger name="org.strykeforce.thirdcoast" level="DEBUG"/>
+  <logger name="org.eclipse.jetty" level="INFO"/>
+
   <root level="verbose">
     <appender-ref ref="STDOUT"/>
   </root>
