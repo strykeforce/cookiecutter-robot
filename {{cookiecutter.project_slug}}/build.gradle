@@ -37,11 +37,11 @@ dependencies {
 {% if cookiecutter.use_thirdcoast_telemetry == 'y' %}
     compile "org.strykeforce.thirdcoast:telemetry:${thirdcoastVersion}"
 {% endif %}
+{% if cookiecutter.use_logger == 'y' %}
+    compile "ch.qos.logback:logback-classic:${logbackVersion}"
 {% if cookiecutter.use_kotlin == 'y' %}
     compile "io.github.microutils:kotlin-logging:${kotlinLoggingVersion}"
 {% endif %}
-{% if cookiecutter.use_logger == 'y' %}
-    compile "ch.qos.logback:logback-classic:${logbackVersion}"
 {% endif %}
 }
 
