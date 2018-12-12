@@ -7,6 +7,7 @@ plugins {
     id "org.jetbrains.kotlin.jvm" version "1.3.11"
 {% else %}
     id "java"
+    id "com.diffplug.gradle.spotless" version "3.16.0"
 {% endif %}
     id "edu.wpi.first.GradleRIO" version "2019.0.0-alpha-3"
     id "idea"
@@ -81,3 +82,11 @@ idea {
         downloadSources = true
     }
 }
+
+{% if cookiecutter.use_kotlin != 'y' %}
+spotless {
+  java {
+    googleJavaFormat()
+  }
+}
+{% endif %}
