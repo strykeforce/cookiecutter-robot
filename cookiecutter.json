@@ -8,6 +8,7 @@
   "use_thirdcoast_swerve": "y",
   "use_thirdcoast_telemetry": "y",
   "use_logger": "y",
+  "use_spotless": "y",
   "_copy_without_render": [
     "gradlew",
     "gradlew.bat",

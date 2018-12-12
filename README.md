@@ -2,6 +2,8 @@
 
 A cookiecutter template to create a new FRC robot project in Java or Kotlin.
 
+**Note:** Kotlin cookiecutters are not complete yet.
+
 ## Requirements
 
 Install `cookiecutter` command line: `pip install cookiecutter`
