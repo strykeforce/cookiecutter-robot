@@ -14,6 +14,9 @@ import org.strykeforce.thirdcoast.telemetry.TelemetryController;
 import org.strykeforce.thirdcoast.telemetry.TelemetryService;
 {% endif -%}
 import java.util.Date;
+{% if cookiecutter.use_driver_controls == 'y' or cookiecutter.use_driver_controls == 'y' -%}
+import {{cookiecutter.package_name}}.control.Controls;
+{% endif %}
 
 public class Robot extends TimedRobot {
 {% if cookiecutter.use_thirdcoast_swerve == 'y' -%}
@@ -22,6 +25,12 @@ public class Robot extends TimedRobot {
 {% if cookiecutter.use_thirdcoast_telemetry == 'y' -%}
   public static final TelemetryService TELEMETRY = new TelemetryService(TelemetryController::new);
 {% endif %}
+{% if cookiecutter.use_driver_controls == 'y' or cookiecutter.use_driver_controls == 'y' -%}
+  // Controls initialize Commands so this should be instantiated last to prevent
+  // NullPointerExceptions in commands that require() Subsystems above.
+  public static final Controls CONTROLS = new Controls();
+{% endif %}
+
 {% if cookiecutter.use_logger == 'y' -%}
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 {% endif %}
