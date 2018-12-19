@@ -7,6 +7,8 @@
   "use_kotlin": "n",
   "use_thirdcoast_swerve": "y",
   "use_thirdcoast_telemetry": "y",
+  "use_driver_controls": "y",
+  "use_game_controls": "y",
   "use_logger": "y",
   "use_spotless": "y",
   "_copy_without_render": [
