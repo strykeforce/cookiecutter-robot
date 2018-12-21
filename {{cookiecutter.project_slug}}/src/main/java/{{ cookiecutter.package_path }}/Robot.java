@@ -19,11 +19,12 @@ import {{cookiecutter.package_name}}.control.Controls;
 {% endif %}
 
 public class Robot extends TimedRobot {
+{% if cookiecutter.use_thirdcoast_telemetry == 'y' -%}
+  // Instantiate this before Subsystems because they use telemetry service.
+  public static final TelemetryService TELEMETRY = new TelemetryService(TelemetryController::new);
+{% endif %}
 {% if cookiecutter.use_thirdcoast_swerve == 'y' -%}
   public static final DriveSubsystem DRIVE = new DriveSubsystem();
-{% endif %}
-{% if cookiecutter.use_thirdcoast_telemetry == 'y' -%}
-  public static final TelemetryService TELEMETRY = new TelemetryService(TelemetryController::new);
 {% endif %}
 {% if cookiecutter.use_driver_controls == 'y' or cookiecutter.use_driver_controls == 'y' -%}
   // Controls initialize Commands so this should be instantiated last to prevent
