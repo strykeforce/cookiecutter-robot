@@ -23,18 +23,18 @@ public final class TeleOpDriveCommand extends Command {
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 {% endif %}
 
-  private final static DriveSubsystem drive = Robot.DRIVE;
+  private final static DriveSubsystem swerve = Robot.DRIVE;
   {% if cookiecutter.use_driver_controls == 'y' -%}
   private final static DriverControls controls = Robot.CONTROLS.getDriverControls();
   {% endif %}
 
   public TeleOpDriveCommand() {
-    requires(drive);
+    requires(swerve);
   }
 
   @Override
   protected void initialize() {
-    drive.setDriveMode(TELEOP);
+    swerve.setDriveMode(TELEOP);
   }
 
   @Override
@@ -54,7 +54,7 @@ public final class TeleOpDriveCommand extends Command {
     double strafe = 0.0;
     double azimuth = 0.0;
 {% endif %}
-    drive.drive(forward, strafe, azimuth);
+    swerve.drive(forward, strafe, azimuth);
   }
 
   @Override
@@ -64,7 +64,7 @@ public final class TeleOpDriveCommand extends Command {
 
   @Override
   protected void end() {
-    drive.drive(0.0, 0.0, 0.0);
+    swerve.drive(0.0, 0.0, 0.0);
   }
 
 {% if cookiecutter.use_driver_controls == 'y' -%}

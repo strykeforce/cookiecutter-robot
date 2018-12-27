@@ -17,7 +17,7 @@ All features can be optionally enabled.
 -   [Logback logging](https://logback.qos.ch)
 -   [Spotless code formatting](https://github.com/diffplug/spotless) configured for Google java formatting standard
 
-**Note:** Kotlin cookiecutters are not complete yet.
+**Note:** Kotlin cookiecutters are complete but not fully tested on hardware.
 
 ## Quickstart
 
