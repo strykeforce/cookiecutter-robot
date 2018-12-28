@@ -19,14 +19,20 @@ import mu.KotlinLogging
 private val logger = KotlinLogging.logger {}
 {% endif %}
 
-
 private const val DRIVE_SETPOINT_MAX = 0.0
-private const val ROBOT_LENGTH = 1.0
-private const val ROBOT_WIDTH = 1.0
 
 class DriveSubsystem : Subsystem() {
 
-    private val swerve = swerveDrive()
+    private val swerve = SwerveDrive(
+        SwerveDriveConfig().apply {
+            wheels = wheels()
+            gyro = AHRS(SPI.Port.kMXP)
+            length = 1.0
+            width = 1.0
+            gyroLoggingEnabled = true
+            summarizeTalonErrors = false
+        }
+    ).apply { zeroAzimuthEncoders() }
 
     override fun initDefaultCommand() {
         defaultCommand = TeleOpDriveCommand()
@@ -36,16 +42,15 @@ class DriveSubsystem : Subsystem() {
 
     fun drive(forward: Double, strafe: Double, azimuth: Double) = swerve.drive(forward, strafe, azimuth)
 
-}
+    fun resetGyro() {
+        val gyro = swerve.gyro
+        gyro.angleAdjustment = 0.0
+        val adj = gyro.angle % 360
+        gyro.angleAdjustment = -adj
+        logger.info { "resetting gyro zero $adj" }
+    }
 
-private fun swerveDrive() = SwerveDrive(SwerveDriveConfig().apply {
-    wheels = wheels()
-    gyro = AHRS(SPI.Port.kMXP)
-    length = ROBOT_LENGTH
-    width = ROBOT_WIDTH
-    gyroLoggingEnabled = true
-    summarizeTalonErrors = false
-})
+}
 
 private fun wheels(): Array<Wheel> {
     val azimuthConfig = TalonSRXConfiguration().apply {
