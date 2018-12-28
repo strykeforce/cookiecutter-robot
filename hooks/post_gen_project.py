@@ -54,6 +54,7 @@ if __name__ == "__main__":
     # swerve
     if "{{ cookiecutter.use_thirdcoast_swerve }}" != "y":
         rm_src_file("command", "TeleOpDriveCommand")
+        rm_src_file("command", "ZeroGyroCommand")
         rm_src_file("subsystem", "DriveSubsystem")
 
     # controls

@@ -10,6 +10,9 @@ import org.slf4j.LoggerFactory;
 {% else %}
 import edu.wpi.first.wpilibj.command.PrintCommand;
 {% endif %}
+{% if cookiecutter.use_thirdcoast_swerve=='y'-%}
+import {{cookiecutter.package_name}}.command.ZeroGyroCommand;
+{% endif %}
 
 /** This assumes the use of an Interlink X Flight Simulator controller. */
 @SuppressWarnings("unused")
@@ -30,7 +33,11 @@ public class DriverControls {
     new JoystickButton(joystick, Shoulder.RIGHT_DOWN.id).whenPressed(log(Shoulder.RIGHT_DOWN));
 
     // Push-buttons
+    {% if cookiecutter.use_thirdcoast_swerve=='y'-%}
+    new JoystickButton(joystick, Button.RESET.id).whenPressed(new ZeroGyroCommand());
+    {% else %}
     new JoystickButton(joystick, Button.RESET.id).whenPressed(log(Button.RESET));
+    {% endif %}
     new JoystickButton(joystick, Button.HAMBURGER.id).whenPressed(log(Button.HAMBURGER));
     new JoystickButton(joystick, Button.X.id).whenPressed(log(Button.X));
     new JoystickButton(joystick, Button.UP.id).whenPressed(log(Button.UP));

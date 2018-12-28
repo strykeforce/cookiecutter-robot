@@ -4,6 +4,9 @@ import edu.wpi.first.wpilibj.Joystick
 import edu.wpi.first.wpilibj.buttons.JoystickButton
 import edu.wpi.first.wpilibj.command.Command
 import {{cookiecutter.package_name}}.command.LogCommand
+{% if cookiecutter.use_thirdcoast_swerve=='y'-%}
+import {{cookiecutter.package_name}}.command.ZeroGyroCommand
+{% endif %}
 {% if cookiecutter.use_logger == 'y' %}
 import mu.KotlinLogging
 
@@ -50,7 +53,11 @@ class DriverControls internal constructor(port: Int) {
         JoystickButton(joystick, Shoulder.RIGHT_DOWN.id).whenPressed(log(Shoulder.RIGHT_DOWN))
 
         // Push-buttons
+{% if cookiecutter.use_thirdcoast_swerve=='y'-%}
+        JoystickButton(joystick, Button.RESET.id).whenPressed(ZeroGyroCommand())
+{% else %}
         JoystickButton(joystick, Button.RESET.id).whenPressed(log(Button.RESET))
+{% endif %}
         JoystickButton(joystick, Button.HAMBURGER.id).whenPressed(log(Button.HAMBURGER))
         JoystickButton(joystick, Button.X.id).whenPressed(log(Button.X))
         JoystickButton(joystick, Button.UP.id).whenPressed(log(Button.UP))

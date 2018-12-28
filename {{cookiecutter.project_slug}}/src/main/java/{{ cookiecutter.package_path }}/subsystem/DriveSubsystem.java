@@ -33,9 +33,7 @@ public class DriveSubsystem extends Subsystem {
 {% endif -%}
 
   public DriveSubsystem() {
-{%if cookiecutter.use_logger=='y'-%}
-    logger.info("drive subsystem initialized");
-{% endif -%}
+    swerve.zeroAzimuthEncoders();
   }
 
   @Override
@@ -53,6 +51,15 @@ public class DriveSubsystem extends Subsystem {
   public void drive(double forward, double strafe, double azimuth) {
     swerve.drive(forward, strafe, azimuth);
   }
+
+  public void zeroGyro() {
+    AHRS gyro = swerve.getGyro();
+    gyro.setAngleAdjustment(0);
+    double adj = gyro.getAngle() % 360;
+    gyro.setAngleAdjustment(-adj);
+    logger.info("resetting gyro zero ({})", adj);
+  }
+
 
   // Swerve configuration
 
