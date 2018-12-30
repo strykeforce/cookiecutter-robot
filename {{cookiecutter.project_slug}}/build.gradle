@@ -31,8 +31,10 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
 {% endif %}
     compile wpilib()
+{% if cookiecutter.use_thirdcoast_swerve == 'y' or cookiecutter.use_thirdcoast_telemetry == 'y' %}
     compile ctre()
     compile navx()
+{% endif %}
 {% if cookiecutter.use_thirdcoast_swerve == 'y' %}
     compile "org.strykeforce.thirdcoast:swerve:${thirdcoastVersion}"
 {% endif %}
