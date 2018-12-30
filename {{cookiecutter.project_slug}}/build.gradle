@@ -11,7 +11,11 @@ plugins {
 {% endif %}
 }
 
+{% if cookiecutter.use_kotlin == 'y' %}
+def ROBOT_MAIN_CLASS = "{{ cookiecutter.package_name }}.MainKt"
+{% else %}
 def ROBOT_MAIN_CLASS = "{{ cookiecutter.package_name }}.Main"
+{% endif %}
 
 deploy {
     targets {
@@ -40,7 +44,7 @@ repositories {
 }
 
 dependencies {
-{% if cookiecutter.use_kotlin == 'y' %}    
+{% if cookiecutter.use_kotlin == 'y' %}
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
 {% endif %}
     compile wpi.deps.wpilib()
@@ -70,6 +74,7 @@ dependencies {
 compileKotlin {
     kotlinOptions {
         jvmTarget = '1.8'
+        freeCompilerArgs = ['-progressive']
     }
 }
 {% endif %}
