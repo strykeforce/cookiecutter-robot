@@ -12,6 +12,7 @@
   "use_logger": "y",
   "use_spotless": "y",
   "_copy_without_render": [
+    ".gitignore",
     "gradlew",
     "gradlew.bat",
     "gradle/wrapper/gradle-wrapper.jar"
