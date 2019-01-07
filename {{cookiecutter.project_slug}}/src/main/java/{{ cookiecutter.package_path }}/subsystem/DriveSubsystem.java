@@ -81,12 +81,12 @@ public class DriveSubsystem extends Subsystem {
     azimuthConfig.continuousCurrentLimit = 10;
     azimuthConfig.peakCurrentDuration = 0;
     azimuthConfig.peakCurrentLimit = 0;
-    azimuthConfig.slot_0.kP = 10.0;
-    azimuthConfig.slot_0.kI = 0.0;
-    azimuthConfig.slot_0.kD = 100.0;
-    azimuthConfig.slot_0.kF = 0.0;
-    azimuthConfig.slot_0.integralZone = 0;
-    azimuthConfig.slot_0.allowableClosedloopError = 0;
+    azimuthConfig.slot0.kP = 10.0;
+    azimuthConfig.slot0.kI = 0.0;
+    azimuthConfig.slot0.kD = 100.0;
+    azimuthConfig.slot0.kF = 0.0;
+    azimuthConfig.slot0.integralZone = 0;
+    azimuthConfig.slot0.allowableClosedloopError = 0;
     azimuthConfig.motionAcceleration = 10_000;
     azimuthConfig.motionCruiseVelocity = 800;
 
@@ -109,7 +109,7 @@ public class DriveSubsystem extends Subsystem {
       TalonSRX driveTalon = new TalonSRX(i + 10);
       driveTalon.configAllSettings(driveConfig);
       driveTalon.setNeutralMode(NeutralMode.Brake);
-  
+
     {% if cookiecutter.use_thirdcoast_telemetry == 'y' -%}
       telemetryService.register(azimuthTalon);
       telemetryService.register(driveTalon);
