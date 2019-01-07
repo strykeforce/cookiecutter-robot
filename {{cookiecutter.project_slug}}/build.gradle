@@ -4,7 +4,7 @@ plugins {
 {% else %}
     id "java"
 {% endif %}
-    id "edu.wpi.first.GradleRIO" version "2019.1.1-beta-4a"
+    id "edu.wpi.first.GradleRIO" version "2019.1.1"
     id "idea"
 {% if cookiecutter.use_spotless == 'y' %}
     id "com.diffplug.gradle.spotless" version "3.16.0"
@@ -41,6 +41,7 @@ deploy {
 
 repositories {
     jcenter()
+    maven { url = "https://raw.githubusercontent.com/Open-RIO/Maven-Mirror/master/m2" } // FIXME
 }
 
 dependencies {
@@ -52,10 +53,6 @@ dependencies {
     nativeZip wpi.deps.vendor.jni(wpi.platforms.roborio)
     nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
 
-{% if cookiecutter.use_thirdcoast_swerve == 'y' or cookiecutter.use_thirdcoast_telemetry == 'y' %}
-    compile ctre()
-    compile navx()
-{% endif %}
 {% if cookiecutter.use_thirdcoast_swerve == 'y' %}
     compile "org.strykeforce.thirdcoast:swerve:${thirdcoastVersion}"
 {% endif %}
