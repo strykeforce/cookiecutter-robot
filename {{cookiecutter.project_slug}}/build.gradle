@@ -41,7 +41,6 @@ deploy {
 
 repositories {
     jcenter()
-    maven { url = "https://raw.githubusercontent.com/Open-RIO/Maven-Mirror/master/m2" } // FIXME
 }
 
 dependencies {
