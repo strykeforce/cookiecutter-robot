@@ -49,7 +49,7 @@ public class DriveSubsystem extends Subsystem {
   }
 
   public void drive(double forward, double strafe, double azimuth) {
-    swerve.drive(forward, strafe, azimuth);
+    swerve.drive(forward, -strafe, azimuth);
   }
 
   public void zeroGyro() {
