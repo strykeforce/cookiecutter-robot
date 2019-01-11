@@ -33,7 +33,6 @@ public class DriveSubsystem extends Subsystem {
 {% endif -%}
 
   public DriveSubsystem() {
-    swerve.zeroAzimuthEncoders();
   }
 
   @Override
@@ -46,6 +45,10 @@ public class DriveSubsystem extends Subsystem {
     logger.debug("setting drive mode to {}", mode);
 {% endif -%}
     swerve.setDriveMode(mode);
+  }
+
+  public void zeroAzimuthEncoders() {
+    swerve.zeroAzimuthEncoders();
   }
 
   public void drive(double forward, double strafe, double azimuth) {

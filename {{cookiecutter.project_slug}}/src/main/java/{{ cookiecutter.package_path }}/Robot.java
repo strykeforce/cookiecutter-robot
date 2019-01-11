@@ -43,6 +43,9 @@ public class Robot extends TimedRobot {
   {% else -%}
     System.out.println("Today is " + new Date().toString());
   {% endif -%}
+  {% if cookiecutter.use_thirdcoast_swerve == 'y' -%}
+    DRIVE.zeroAzimuthEncoders();
+  {% endif %}
   {% if cookiecutter.use_thirdcoast_telemetry == 'y' -%}
     TELEMETRY.start();
   {% endif -%}
