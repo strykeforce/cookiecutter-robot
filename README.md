@@ -17,7 +17,19 @@ All features can be optionally enabled.
 -   [Logback logging](https://logback.qos.ch)
 -   [Spotless code formatting](https://github.com/diffplug/spotless) configured for Google java formatting standard
 
-**Note:** Kotlin cookiecutters are complete but not fully tested on hardware.
+**Note:** Kotlin cookiecutters are not yet updated for 2019 season.
+
+## Hardware Assumptions
+
+The template generates a robot project that assumes the following hardware is in use.
+
+**NOTE:** Do not assume PID parameters will work for your hardware. You must test and tune as needed.
+
+-   [Third Coast Swerve Drive](https://www.strykeforce.org/resources/Mechanical_Design_Description_of_Stryke_Force_Swerve_Drive_Units.pdf)
+-   Interlink X Flight Simulator driver controls on USB port 0 of Driver Station
+-   Logitech F310 Game controls on USB port 1 of Driver Station
+
+
 
 ## Quickstart
 
