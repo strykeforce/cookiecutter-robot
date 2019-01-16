@@ -28,7 +28,7 @@ public class DriveSubsystem extends Subsystem {
   private static final double ROBOT_WIDTH = 1.0;
 
   private final SwerveDrive swerve = getSwerve();
-{%if cookiecutter.use_logger=='y'-%}
+{% if cookiecutter.use_logger=='y' -%}
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 {% endif -%}
 
@@ -60,7 +60,11 @@ public class DriveSubsystem extends Subsystem {
     gyro.setAngleAdjustment(0);
     double adj = gyro.getAngle() % 360;
     gyro.setAngleAdjustment(-adj);
+    {% if cookiecutter.use_logger=='y' -%}
     logger.info("resetting gyro zero ({})", adj);
+    {% else %}
+    System.out.println("resetting gyro zero");
+    {% endif %}
   }
 
 
