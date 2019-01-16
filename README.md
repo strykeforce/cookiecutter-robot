@@ -33,7 +33,7 @@ The template generates a robot project that assumes the following hardware is in
 
 ## Quickstart
 
-Install the latest Cookiecutter if you haven't yet:
+You must have Python and Pip installed. Install the latest Cookiecutter if you haven't yet:
 
     pip install -U cookiecutter
 
