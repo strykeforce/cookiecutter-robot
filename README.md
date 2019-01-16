@@ -43,7 +43,7 @@ Generate a FRC robot project:
 
 Then:
 
--   Format source code: `./gradlew spotlessApply`
+-   Format source code: `./gradlew spotlessApply` (if Spotless code formatting enabled)
 -   Build project: `./gradlew build`
 -   Deploy to robot: `./gradlew deploy`
 
