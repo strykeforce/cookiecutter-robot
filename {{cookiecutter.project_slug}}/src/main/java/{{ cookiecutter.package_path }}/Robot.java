@@ -45,6 +45,7 @@ public class Robot extends TimedRobot {
   {% endif -%}
   {% if cookiecutter.use_thirdcoast_swerve == 'y' -%}
     DRIVE.zeroAzimuthEncoders();
+    DRIVE.zeroGyro();
   {% endif %}
   {% if cookiecutter.use_thirdcoast_telemetry == 'y' -%}
     TELEMETRY.start();
