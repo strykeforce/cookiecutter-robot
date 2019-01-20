@@ -84,6 +84,8 @@ public class DriveSubsystem extends Subsystem {
 
   private Wheel[] getWheels() {
     TalonSRXConfiguration azimuthConfig = new TalonSRXConfiguration();
+    // NOTE: ensure encoders are in-phase with motor direction. Encoders should increase
+    // when azimuth motor runs in forward direction.
     azimuthConfig.primaryPID.selectedFeedbackSensor = FeedbackDevice.CTRE_MagEncoder_Relative;
     azimuthConfig.continuousCurrentLimit = 10;
     azimuthConfig.peakCurrentDuration = 0;
