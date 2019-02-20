@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 
@@ -50,13 +50,6 @@ if __name__ == "__main__":
     if "{{ cookiecutter.use_logger }}" != "y":
         rm_tree(os.path.join(MAIN_DIR, "resources"))
         rm_src_file("command", "LogCommand")
-
-    # vendor deps
-    if (
-        "{{ cookiecutter.use_thirdcoast_swerve }}" != "y"
-        and "{{ cookiecutter.use_thirdcoast_telemetry }}" != "y"
-    ):
-        rm_tree(os.path.join(PROJECT_DIR, "vendordeps"))
 
     # swerve
     if "{{ cookiecutter.use_thirdcoast_swerve }}" != "y":
