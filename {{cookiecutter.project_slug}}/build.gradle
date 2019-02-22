@@ -4,7 +4,7 @@ plugins {
 {% else %}
     id "java"
 {% endif %}
-    id "edu.wpi.first.GradleRIO" version "2019.2.1"
+    id "edu.wpi.first.GradleRIO" version "2019.3.2"
     id "idea"
 {% if cookiecutter.use_spotless == 'y' %}
     id "com.diffplug.gradle.spotless" version "3.16.0"
