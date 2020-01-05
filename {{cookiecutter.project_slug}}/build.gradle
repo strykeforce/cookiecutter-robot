@@ -4,7 +4,7 @@ plugins {
 {% else %}
     id "java"
 {% endif %}
-    id "edu.wpi.first.GradleRIO" version "2019.3.2"
+    id "edu.wpi.first.GradleRIO" version "2020.1.2"
     id "idea"
 {% if cookiecutter.use_spotless == 'y' %}
     id "com.diffplug.gradle.spotless" version "3.16.0"
@@ -47,8 +47,8 @@ dependencies {
 {% if cookiecutter.use_kotlin == 'y' %}
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
 {% endif %}
-    compile wpi.deps.wpilib()
-    compile wpi.deps.vendor.java()
+    implementation wpi.deps.wpilib()
+    implementation wpi.deps.vendor.java()
     nativeZip wpi.deps.vendor.jni(wpi.platforms.roborio)
     nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
 
