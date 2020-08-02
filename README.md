@@ -1,6 +1,9 @@
-# cookiecutter-robot
+# Deprecated
 
 This project is deprecated and no longer updated for FRC seasons past 2019. Use the WPILib new project creator installed by [WPILib](https://github.com/wpilibsuite/allwpilib/releases).
+
+# Original README
+# cookiecutter-robot
 
 A [cookiecutter](https://github.com/audreyr/cookiecutter) template to create a new FRC robot project in Java or Kotlin. With the right hardware, this will produce a working swerve-drive robot.
 
